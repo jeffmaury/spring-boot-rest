@@ -1,4 +1,4 @@
-package com.redhat.springboot.samples.springbootrest;
+package com.redhat.sb.samples.sbr;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
