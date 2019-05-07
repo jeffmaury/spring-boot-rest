@@ -35,9 +35,10 @@ import groovyx.net.http.HTTPBuilder
  
 @NonCPS
 def releaseToGitHub(owner, repo, token, tag, artifact) {
-	def http = new HTTPBuilder('https://api.github.com/repos/${owner}/${repo}/releases')
-	http.handler.failure = {}
-	http.get(path: '/tags/${tag}', contentType: JSON) { resp, json ->
-		println resp.status;
-	}
+	sh '''release=$(curl https://api.github.com/repos/$owner/$repo/releases/tags/$tag | sed -n -e 's/"id":\ \([0-9]\+\),/\1/p' | head -n 1 | sed 's/[[:blank:]]//g')
+	if [ -z "$release ]
+	then
+	else
+	fi
+	'''
 }
