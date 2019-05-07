@@ -30,6 +30,7 @@ pipeline {
 	}
 }
 
+@Grab('org.codehaus.groovy.modules.http-builder:http-builder' )
 import groovyx.net.http.HTTPBuilder
  
 @NonCPS
