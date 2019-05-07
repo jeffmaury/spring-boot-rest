@@ -24,6 +24,7 @@ pipeline {
 			steps {
 				withCredentials([[$class: 'StringBinding', credentialsId: 'Github', variable: 'TOKEN']]) {
 					releaseToGitHub('jeffmaury' , 'spring-boot-rest', ${TOKEN}, 'v0.0.1', "")
+				}
 			}
 		}
 	}
