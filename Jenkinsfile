@@ -35,7 +35,7 @@ pipeline {
 def releaseToGitHub(owner, repo, token, tag, artifact) {
 	sh """
 	release=\$(curl "https://api.github.com/repos/${owner}/${repo}/releases/tags/${tag}" | sed -n -e 's/"id":\\ \\([0-9]\\+\\),/\\1/p' | head -n 1 | sed 's/[[:blank:]]//g')
-	if [ -z "$release ]
+	if [ -z "\$release ]
 	then
 	else
 	fi
