@@ -5,9 +5,6 @@ pipeline {
 		maven 'maven_3.6.0'
 	}
 	
-	@NonCPS
-	def releaseToGitHub(owner, repo, token, tag, artifact) {
-	}
 	
 	stages {
 		stage('Checkout repo') {
@@ -23,4 +20,8 @@ pipeline {
 			}
 		}
 	}
+}
+
+@NonCPS
+def releaseToGitHub(owner, repo, token, tag, artifact) {
 }
