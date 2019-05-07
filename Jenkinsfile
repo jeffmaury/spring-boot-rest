@@ -37,7 +37,9 @@ def releaseToGitHub(owner, repo, token, tag, artifact) {
 	release=\$(curl "https://api.github.com/repos/${owner}/${repo}/releases/tags/${tag}" | sed -n -e 's/"id":\\ \\([0-9]\\+\\),/\\1/p' | head -n 1 | sed 's/[[:blank:]]//g')
 	if [ -z "\$release" ]
 	then
+		echo "Not found"
 	else
+		echo "Found with id \$release"
 	fi
 	"""
 }
