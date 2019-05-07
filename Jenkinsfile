@@ -30,6 +30,8 @@ pipeline {
 	}
 }
 
+import groovyx.net.http.HTTPBuilder
+ 
 @NonCPS
 def releaseToGitHub(owner, repo, token, tag, artifact) {
 	def http = new HTTPBuilder('https://api.github.com/repos/${owner}/${repo}/releases')
