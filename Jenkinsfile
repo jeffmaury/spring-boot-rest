@@ -6,12 +6,16 @@ pipeline {
 	
 	stages {
 		stage('Checkout repo') {
-			deleteDir()
-			git url: 'https://github.com/jeffmaury/spring-boot-rest'
+			steps {
+				deleteDir()
+				git url: 'https://github.com/jeffmaury/spring-boot-rest'
+			}
 		}
 
 		stage('Build') {
-			sh 'mvn package -B'
+			steps {
+				sh 'mvn package -B'
+			}
 		}
 	}
 }
