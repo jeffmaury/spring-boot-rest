@@ -23,7 +23,7 @@ pipeline {
 		stage('Publish') {
 			steps {
 				withCredentials([[$class: 'StringBinding', credentialsId: 'Github', variable: 'TOKEN']]) {
-					releaseToGitHub('jeffmaury' , 'spring-boot-rest', '${TOKEN}', 'v0.0.1', findFiles(glob: '**.jar')[0].path)
+					releaseToGitHub('jeffmaury' , 'spring-boot-rest', '${TOKEN}', 'v0.0.1', findFiles(glob: '**/*.jar')[0].path)
 				}
 			}
 		}
