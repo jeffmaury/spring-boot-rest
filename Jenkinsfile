@@ -43,7 +43,7 @@ def releaseToGitHub(owner, repo, token, tag, artifact) {
 	then
 		echo "No release, exiting"
 	else
-	    name = `basename ${artifact}`
+	    name = \$(basename ${artifact})
 		echo "\$name"
 		artifactId=\$(curl -XPOST -H "Authorization:token ${token}" --data-binary "@${artifact}" "https://api.github.com/repos/${owner}/${repo}/releases/\$releaseId/assets?name=\$name"| sed -n -e 's/"id":\\ \\([0-9]\\+\\),/\\1/p' | head -n 1 | sed 's/[[:blank:]]//g')
 		if [ -z "\$artifactId" ]
