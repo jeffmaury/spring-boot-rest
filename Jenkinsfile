@@ -45,7 +45,7 @@ def releaseToGitHub(owner, repo, token, tag, artifact) {
 	else
 	    artifactName=\$(basename ${artifact})
 		echo "\$artifactName"
-		artifactId=\$(curl -XPOST -H "Authorization:token ${token}" --data-binary "@${artifact}" "https://api.github.com/repos/${owner}/${repo}/releases/\$releaseId/assets?name=\$artifactName"| sed -n -e 's/"id":\\ \\([0-9]\\+\\),/\\1/p' | head -n 1 | sed 's/[[:blank:]]//g')
+		artifactId=\$(curl -XPOST -H "Authorization:token ${token}" -H "Content-Type:application/octet-stream" --data-binary "@${artifact}" "https://api.github.com/repos/${owner}/${repo}/releases/\$releaseId/assets?name=\$artifactName"| sed -n -e 's/"id":\\ \\([0-9]\\+\\),/\\1/p' | head -n 1 | sed 's/[[:blank:]]//g')
 		if [ -z "\$artifactId" ]
 		then
 			echo "No artifact, exiting"
